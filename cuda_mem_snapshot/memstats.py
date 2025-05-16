@@ -9,15 +9,15 @@ MEMSTATS_OUPUT_FILE = os.getenv("MEMSTATS_OUPUT_FILE", "memstats.txt")
 def capture_mem_stats(device, label):
     with open(MEMSTATS_OUPUT_FILE, 'a') as f:
         ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        f.write(f"{device}::{ts}::{label}::allocator_backend: " {torch.cuda.get_allocator_backend()})
-        f.write(f"{device}::{ts}::{label}::device_memory_used: " {torch.cuda.device_memory_used(device) / (1024**3)})
-        f.write(f"{device}::{ts}::{label}::memory_allocated: " {torch.cuda.memory_allocated(device) / (1024**3)})
-        f.write(f"{device}::{ts}::{label}::memory_reserved: " {torch.cuda.memory_reserved(device) / (1024**3)})
-        f.write(f"{device}::{ts}::{label}::max_memory_allocated: " {torch.cuda.max_memory_allocated(device) / (1024**3)})
-        f.write(f"{device}::{ts}::{label}::max_memory_reserved: " {torch.cuda.max_memory_reserved(device) / (1024**3)})
+        f.write(f"{device}::{ts}::{label}::allocator_backend: {torch.cuda.get_allocator_backend()}")
+        f.write(f"{device}::{ts}::{label}::device_memory_used:  {torch.cuda.device_memory_used(device) / (1024**3)}")
+        f.write(f"{device}::{ts}::{label}::memory_allocated:  {torch.cuda.memory_allocated(device) / (1024**3)}")
+        f.write(f"{device}::{ts}::{label}::memory_reserved:  {torch.cuda.memory_reserved(device) / (1024**3)}")
+        f.write(f"{device}::{ts}::{label}::max_memory_allocated:  {torch.cuda.max_memory_allocated(device) / (1024**3)}")
+        f.write(f"{device}::{ts}::{label}::max_memory_reserved:  {torch.cuda.max_memory_reserved(device) / (1024**3)}")
         torch.cuda.reset_max_memory_allocated(device)
 
-def plot_mem_stats(device)
+def plot_mem_stats(device):
     # Initialize lists to store data
     timestamps = []
     device_memory_used = []

@@ -2,7 +2,7 @@ import torch
 
 class CudaMemorySnapshotManager:
     def __init__(self,  save_dir, snapshot_name, enable=True):
-        rank = int(os.environ["LOCAL_RANK"])
+        rank = os.getenv("LOCAL_RANK", '0')
         self.snapshot_path = f"{save_dir}/{snapshot_name}_{rank}.pickle"
         self.enable = enable
 
